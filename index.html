@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nao Medical Appointments</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <div id="booking-view" class="container">
+        <h2 class="form-title">Book an Appointment</h2>
+        
+        <div class="company-header-info">
+            <div class="company-subname">Nao Medical Support Group</div>
+            <div class="company-phone">Toll Free: <a href="tel:18005550199">1-800-555-0199</a></div>
+        </div>
+
+        <form id="appointment-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" id="first-name" required placeholder="Enter First Name">
+                </div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" id="last-name" required placeholder="Enter Last Name">
+                </div>
+            </div>
+            
+            <!-- Language selection inside the main booking form -->
+            <div class="form-group">
+                <label>Preferred Language</label>
+                <select id="preferred-language">
+                    <option value="English">English</option>
+                    <option value="Spanish">Español</option>
+                    <option value="French">Français</option>
+                    <option value="Arabic">العربية</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Date of Birth <span class="optional-text">(Optional)</span></label>
+                <input type="date" id="dob">
+            </div>
+            <div class="form-group">
+                <label>Appointment Date</label>
+                <input type="date" id="appointment-date" required>
+            </div>
+            <div class="form-group">
+                <label>Appointment Time</label>
+                <input type="time" id="appointment-time" required>
+            </div>
+            <div class="form-group">
+                <label>Medical Service</label>
+                <select id="medical-service">
+                    <option value="Nao Medical - Nutrition">Nao Medical - Nutrition</option>
+                    <option value="Nao Medical - Urgent Care">Nao Medical - Urgent Care</option>
+                    <option value="Nao Medical - Primary Care">Nao Medical - Primary Care</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-primary">Book Now</button>
+        </form>
+        <button id="go-to-admin" class="btn-link">Admin Portal</button>
+    </div>
+
+    <div id="admin-view" class="container hidden">
+        <h2>Admin Dashboard</h2>
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Search by first or last name...">
+            <button id="search-btn" class="btn-primary">Search</button>
+        </div>
+         
+        <div id="search-results-container"></div>
+         
+        <button id="go-to-booking" class="btn-link">Back to Booking</button>
+    </div>
+
+    <div id="success-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="success-icon">✓</div>
+            <h3>Appointment successfully booked!</h3>
+        </div>
+    </div>
+
+    <template id="appointment-card-template">
+        <div class="app-card">
+            
+            <!-- REMOVED THE ENTIRE LANGUAGE BAR HOUSING FROM ADMIN VIEW -->
+            
+            <h1 class="greeting-title">Hi <span class="card-firstname">Gift</span>,</h1>
+             
+            <div class="details-box">
+                <div class="badge-header">Your appointment details</div>
+                <div class="badge-body">
+                    <div class="calendar-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2c3e50" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line><circle cx="12" cy="16" r="3"></circle><polyline points="12 14 12 16 14 16"></polyline></svg>
+                    </div>
+                    <div class="badge-text">
+                        <strong class="card-day">Tuesday,</strong>
+                        <span class="card-datetime">June 23, 8:20 AM EST</span>
+                    </div>
+                </div>
+                 
+                <div class="provider-info">
+                    <div class="provider-name"><span class="card-fullname">Gift Newman</span></div>
+                    <div class="patient-dob hidden">DOB: <span class="card-dob">01/01/1990</span></div>
+                     
+                    <div class="facility-name">Nao Medical - Nutrition</div>
+                    <div class="address-block">
+                        <p>232 W OLD COUNTRY RD,</p>
+                        <p>Hicksville, NY - 11801-4011</p>
+                    </div>
+                    <div class="map-action">
+                        <div class="map-icon">➔</div>
+                        <span>Map</span>
+                    </div>
+                </div>
+
+                <div class="contact-footer">
+                    Contact us at :
+                    <a href="tel:9173103371" class="phone-link">917-310-3371</a>
+                </div>
+            </div>
+
+            <button class="btn-confirm hidden">Confirm My Appointment</button>
+            
+            <div class="reschedule-text">Need to Reschedule or Cancel?</div>
+            <button class="btn-modify">Modify Appointment</button>
+            <button class="btn-cancel">Cancel Appointment</button>
+        </div>
+    </template>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
